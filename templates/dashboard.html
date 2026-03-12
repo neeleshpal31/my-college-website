@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Admissions Dashboard | Subhash Academy{% endblock %}
+
+{% block content %}
+<section class="page-hero compact-hero">
+    <div class="container">
+        <div class="section-heading centered reveal-up">
+            <span class="eyebrow">Admin Panel</span>
+            <h1>Admission Dashboard</h1>
+            <p>Review student enquiries and admissions submitted through the website form.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-space pt-0">
+    <div class="container reveal-up">
+        <div class="panel-card table-panel">
+            <div class="table-responsive">
+                <table class="table align-middle dashboard-table mb-0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Course</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td><span class="tag-chip">{{ row[4] }}</span></td>
+                            <td>{{ row[5] }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center py-5 text-muted">No admission records found yet.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

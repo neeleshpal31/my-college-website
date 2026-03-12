@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}Subhash Academy | Home{% endblock %}
+
+{% set college_bg = url_for('static', filename='college-bg.jpg', v='20260312b') %}
+
+{% block content %}
+<section class="hero-section college-hero-bg" style="background-image: linear-gradient(120deg, rgba(12, 35, 56, 0.76), rgba(12, 35, 56, 0.46)), url('{{ college_bg }}');">
+	<div class="container">
+		<div class="hero-grid">
+			<div class="hero-copy reveal-up">
+				<span class="eyebrow">Admissions Open 2026</span>
+				<h1>BCA admission open for 2026 with career-focused academic support.</h1>
+				<p>Subhash Academy College of IT &amp; Management, Chhibramau, Kannauj is inviting applications for the 3-year regular degree course BCA, with poster-listed approval and scholarship support information.</p>
+				<div class="hero-actions">
+					<a href="/admission" class="btn btn-accent btn-lg">Apply Now</a>
+					<a href="/courses" class="btn btn-outline-light btn-lg hero-secondary">Explore Courses</a>
+				</div>
+				<div class="hero-metrics">
+					<div>
+						<strong>15+</strong>
+						<span>Years of teaching trust</span>
+					</div>
+					<div>
+						<strong>3</strong>
+						<span>Career-focused programs</span>
+					</div>
+					<div>
+						<strong>100%</strong>
+						<span>Student-first support</span>
+					</div>
+				</div>
+			</div>
+			<div class="hero-panel reveal-up delay-1">
+				<div class="hero-card glass-card">
+					<p class="hero-card-label">Admission Highlights</p>
+					<h2>3-year regular BCA with admission support, approval details, and guidance from the college team.</h2>
+					<ul class="hero-points">
+						<li>Approval listed as AICTE, New Delhi</li>
+						<li>Central government scholarship highlighted</li>
+						<li>Located at Chhibramau, Kannauj</li>
+					</ul>
+				</div>
+				<div class="floating-note">
+					<span>Latest Notice</span>
+					<strong>BCA admission open for 2026 session</strong>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section-space">
+	<div class="container">
+		<div class="section-heading centered reveal-up">
+			<span class="eyebrow">Why Choose Us</span>
+			<h2>An institute designed for practical learning</h2>
+		</div>
+		<div class="feature-grid">
+			<article class="feature-card reveal-up">
+				<h3>Approval Information</h3>
+				<p>The poster highlights approval by AICTE, New Delhi for the promoted admission cycle.</p>
+			</article>
+			<article class="feature-card reveal-up delay-1">
+				<h3>Scholarship Support</h3>
+				<p>Central government scholarship information is featured for students seeking support options.</p>
+			</article>
+			<article class="feature-card reveal-up delay-2">
+				<h3>Multiple Study Options</h3>
+				<p>Alongside BCA, the poster lists PGDCA and several distance mode courses for broader academic choice.</p>
+			</article>
+		</div>
+	</div>
+</section>
+
+<section class="section-space section-surface">
+	<div class="container">
+		<div class="section-heading reveal-up">
+			<span class="eyebrow">Programs</span>
+			<h2>Courses that match today’s digital opportunities</h2>
+		</div>
+		<div class="program-grid">
+			<article class="program-card reveal-up">
+				<span class="program-duration">3-Year Regular Degree</span>
+				<h3>BCA</h3>
+				<p>Bachelor of Computer Application promoted as the main 2026 admission program.</p>
+			</article>
+			<article class="program-card reveal-up delay-1">
+				<span class="program-duration">1 Year</span>
+				<h3>PGDCA</h3>
+				<p>Postgraduate diploma in computer applications listed among the available options.</p>
+			</article>
+			<article class="program-card reveal-up delay-2">
+				<span class="program-duration">Distance Mode Available</span>
+				<h3>Other Courses</h3>
+				<p>MCA, M.Sc(M), MA, MBA, M.Com, MSW, BA, B.Com and more are highlighted in the poster.</p>
+			</article>
+		</div>
+	</div>
+</section>
+
+<section class="section-space">
+	<div class="container">
+		<div class="split-panel reveal-up">
+			<div>
+				<span class="eyebrow">Latest Notices</span>
+				<h2>What students should know right now</h2>
+			</div>
+			<div class="notice-list">
+				<div class="notice-item">
+					<strong>BCA Admission Open 2026</strong>
+					<p>The poster promotes BCA as a 3-year regular degree course for the 2026 session.</p>
+				</div>
+				<div class="notice-item">
+					<strong>Approval &amp; Benefits Highlighted</strong>
+					<p>Approval by AICTE, New Delhi and central government scholarship support are featured.</p>
+				</div>
+				<div class="notice-item">
+					<strong>Distance Mode Courses Available</strong>
+					<p>The poster also lists MCA, MBA, M.Com, BA, B.Com, PGDCA and other courses.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login | Subhash Academy{% endblock %}
+
+{% block content %}
+<section class="page-hero compact-hero">
+	<div class="container">
+		<div class="section-heading centered reveal-up">
+			<span class="eyebrow">Admin Access</span>
+			<h1>Secure login for admissions management.</h1>
+			<p>Authorized staff can sign in to review website admission submissions.</p>
+		</div>
+	</div>
+</section>
+
+<section class="section-space pt-0">
+	<div class="container d-flex justify-content-center">
+		<div class="panel-card form-card admin-card reveal-up">
+			<h2>Admin Login</h2>
+			{% if error %}
+			<div class="alert alert-danger admin-alert" role="alert">
+				{{ error }}
+			</div>
+			{% endif %}
+			<form action="/adminlogin" method="POST" class="styled-form">
+				<div class="mb-3">
+					<label for="username" class="form-label">Username</label>
+					<input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+				</div>
+				<div class="mb-4">
+					<label for="password" class="form-label">Password</label>
+					<input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+				</div>
+				<button type="submit" class="btn btn-accent w-100">Login</button>
+			</form>
+		</div>
+	</div>
+</section>
+{% endblock %}
