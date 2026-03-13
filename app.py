@@ -1,9 +1,16 @@
 import os
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
+from werkzeug.security import check_password_hash
 from config import db, cursor
 
 app = Flask(__name__)
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "change-this-in-production")
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Lax",
+    SESSION_COOKIE_SECURE=os.getenv("FLASK_SECURE_COOKIE", "0") == "1",
+)
 
 # Home
 @app.route("/")
@@ -40,16 +47,23 @@ def admission():
 @app.route("/submit", methods=["POST"])
 def submit():
 
-    name = request.form["name"]
-    email = request.form["email"]
-    phone = request.form["phone"]
-    course = request.form["course"]
-    message = request.form["message"]
+    name = request.form["name"].strip()
+    email = request.form["email"].strip()
+    phone = request.form["phone"].strip()
+    course = request.form["course"].strip()
+    message = request.form["message"].strip()
+
+    if not name or not email or not phone or not course:
+        return render_template(
+            "admission.html",
+            error="Please fill all required fields.",
+            active_page="admission",
+        )
 
     query = """
     INSERT INTO admissions
     (name,email,phone,course,message)
-    VALUES (%s,%s,%s,%s,%s)
+    VALUES (?,?,?,?,?)
     """
 
     cursor.execute(query,(name,email,phone,course,message))
@@ -68,16 +82,18 @@ def admin():
 @app.route("/adminlogin", methods=["POST"])
 def adminlogin():
 
-    username = request.form["username"]
+    username = request.form["username"].strip()
     password = request.form["password"]
 
-    query = "SELECT * FROM admin WHERE username=%s AND password=%s"
+    query = "SELECT id, username, password FROM admin WHERE username=?"
 
-    cursor.execute(query,(username,password))
+    cursor.execute(query,(username,))
 
     admin = cursor.fetchone()
 
-    if admin:
+    if admin and check_password_hash(admin[2], password):
+        session["admin_id"] = admin[0]
+        session["admin_username"] = admin[1]
         return redirect("/dashboard")
     else:
         return render_template("admin_login.html", error="Invalid username or password", active_page="admin")
@@ -87,11 +103,20 @@ def adminlogin():
 @app.route("/dashboard")
 def dashboard():
 
+    if "admin_id" not in session:
+        return redirect("/admin")
+
     cursor.execute("SELECT * FROM admissions")
 
     data = cursor.fetchall()
 
     return render_template("dashboard.html", data=data, active_page="admin")
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/admin")
 
 
 if __name__ == "__main__":

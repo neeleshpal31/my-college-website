@@ -1,41 +1,59 @@
 import os
-from urllib.parse import urlparse
-
-import mysql.connector
-
-
-def _db_settings_from_env():
-    mysql_url = os.getenv("MYSQL_URL")
-
-    if mysql_url:
-        parsed = urlparse(mysql_url)
-        return {
-            "host": parsed.hostname,
-            "port": parsed.port or 3306,
-            "user": parsed.username,
-            "password": parsed.password,
-            "database": (parsed.path or "").lstrip("/"),
-        }
-
-    return {
-        "host": os.getenv("DB_HOST", "localhost"),
-        "port": int(os.getenv("DB_PORT", "3306")),
-        "user": os.getenv("DB_USER", "root"),
-        "password": os.getenv("DB_PASSWORD", "998877"),
-        "database": os.getenv("DB_NAME", "subhash_college"),
-    }
+import sqlite3
+from werkzeug.security import generate_password_hash
 
 
-settings = _db_settings_from_env()
+def _get_db_path():
+    return os.getenv("SQLITE_DB_PATH", "college.db")
 
-db = mysql.connector.connect(
-    host=settings["host"],
-    port=settings["port"],
-    user=settings["user"],
-    password=settings["password"],
-    database=settings["database"],
-)
 
+db = sqlite3.connect(_get_db_path(), check_same_thread=False)
 cursor = db.cursor()
 
-print("Database Connected Successfully")
+cursor.execute(
+    """
+    CREATE TABLE IF NOT EXISTS admissions (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        phone TEXT NOT NULL,
+        course TEXT NOT NULL,
+        message TEXT
+    )
+    """
+)
+
+cursor.execute(
+    """
+    CREATE TABLE IF NOT EXISTS admin (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL UNIQUE,
+        password TEXT NOT NULL
+    )
+    """
+)
+
+cursor.execute("SELECT COUNT(*) FROM admin")
+admin_count = cursor.fetchone()[0]
+
+if admin_count == 0:
+    cursor.execute(
+        "INSERT INTO admin (username, password) VALUES (?, ?)",
+        ("admin", generate_password_hash("admin123")),
+    )
+
+
+cursor.execute("SELECT id, password FROM admin")
+admin_rows = cursor.fetchall()
+
+for admin_id, stored_password in admin_rows:
+    # Migrate any legacy plaintext passwords to hashed values.
+    if "$" not in stored_password:
+        cursor.execute(
+            "UPDATE admin SET password=? WHERE id=?",
+            (generate_password_hash(stored_password), admin_id),
+        )
+
+db.commit()
+
+print("SQLite Database Connected Successfully")
