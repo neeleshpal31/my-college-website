@@ -1092,6 +1092,8 @@ h4,
 	.college-hero-bg {
 		min-height: auto;
 		background-position: center top;
+		background-size: contain;
+		background-color: #0c2338;
 	}
 
 	.brand-mark strong {
