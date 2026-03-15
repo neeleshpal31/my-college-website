@@ -24,20 +24,90 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 
+	// ── Sticky Navbar ──
 	function updateNavbarState() {
 		if (!navbar) {
 			return;
 		}
 
 		if (window.scrollY > 20) {
-			navbar.classList.add("is-scrolled");
+			navbar.classList.add("navbar-scrolled");
 		} else {
-			navbar.classList.remove("is-scrolled");
+			navbar.classList.remove("navbar-scrolled");
 		}
 	}
 
 	updateNavbarState();
 	window.addEventListener("scroll", updateNavbarState, { passive: true });
+
+	// ── Testimonials Carousel ──
+	const testimonialDots = document.querySelectorAll(".carousel-dot");
+	const testimonialCard = document.querySelector(".testimonial-card");
+	
+	const testimonials = [
+		{
+			stars: "★★★★★",
+			text: "Subhash Academy gave me the perfect foundation for my IT career. The faculty support and practical labs made all the difference.",
+			avatar: "RD",
+			name: "Rajesh Dutt",
+			role: "BCA Graduate, Google"
+		},
+		{
+			stars: "★★★★★",
+			text: "The practical exposure and mentoring at Subhash Academy helped me land my dream job. Highly recommend for anyone serious about IT.",
+			avatar: "AK",
+			name: "Ananya Kumar",
+			role: "PGDCA Graduate, Microsoft"
+		},
+		{
+			stars: "★★★★★",
+			text: "Great institution with excellent faculty and infrastructure. The projects I worked on here became part of my portfolio that impressed employers.",
+			avatar: "MS",
+			name: "Mohit Singh",
+			role: "BCA Graduate, HCL Tech"
+		}
+	];
+
+	let currentTestimonial = 0;
+
+	function updateTestimonial(index) {
+		if (!testimonialCard) return;
+		
+		const testimonial = testimonials[index];
+		testimonialCard.innerHTML = `
+			<div class="testimonial-stars">${testimonial.stars}</div>
+			<p class="testimonial-text">"${testimonial.text}"</p>
+			<div class="testimonial-author">
+				<div class="testimonial-avatar">${testimonial.avatar}</div>
+				<div class="testimonial-meta">
+					<h4>${testimonial.name}</h4>
+					<p>${testimonial.role}</p>
+				</div>
+			</div>
+		`;
+		
+		testimonialDots.forEach((dot, i) => {
+			if (i === index) {
+				dot.classList.add("active");
+			} else {
+				dot.classList.remove("active");
+			}
+		});
+	}
+
+	// Add click handlers to carousel dots
+	testimonialDots.forEach((dot, index) => {
+		dot.addEventListener("click", function () {
+			currentTestimonial = index;
+			updateTestimonial(index);
+		});
+	});
+
+	// Auto-rotate testimonials every 6 seconds
+	setInterval(function () {
+		currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+		updateTestimonial(currentTestimonial);
+	}, 6000);
 });
 
 /* ── Gallery Lightbox ── */
@@ -150,3 +220,149 @@ document.addEventListener("keydown", function (e) {
 		showNextImage();
 	}
 });
+
+/* ========== MODERN HOMEPAGE ANIMATIONS ========== */
+
+// Counter Animation for Statistics
+function animateCounter(element, target) {
+	let current = 0;
+	const increment = target / 60; // Over ~1 second
+	
+	const updateCount = () => {
+		current += increment;
+		if (current < target) {
+			element.textContent = Math.floor(current);
+			requestAnimationFrame(updateCount);
+		} else {
+			element.textContent = target;
+		}
+	};
+	
+	updateCount();
+}
+
+// Intersection Observer for counter animation
+if ("IntersectionObserver" in window) {
+	const observerOptions = {
+		threshold: 0.5
+	};
+
+	const counterObserver = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting && !entry.target.dataset.animated) {
+				const target = parseInt(entry.target.getAttribute("data-target"));
+				animateCounter(entry.target, target);
+				entry.target.dataset.animated = "true";
+			}
+		});
+	}, observerOptions);
+
+	// Observe all counter elements
+	document.querySelectorAll(".stat-counter").forEach((el) => {
+		counterObserver.observe(el);
+	});
+
+	// Also observe other animated elements
+	document.querySelectorAll("[data-aos]").forEach((el) => {
+		counterObserver.observe(el);
+	});
+}
+
+// Smooth scroll with offset for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+	anchor.addEventListener('click', function (e) {
+		const href = this.getAttribute('href');
+		if (href !== '#') {
+			e.preventDefault();
+			const target = document.querySelector(href);
+			if (target) {
+				const offsetTop = target.offsetTop - 80;
+				window.scrollTo({
+					top: offsetTop,
+					behavior: 'smooth'
+				});
+			}
+		}
+	});
+});
+
+// Add animation classes on scroll
+function addScrollAnimations() {
+	const elements = document.querySelectorAll("[data-aos]");
+	
+	if (!("IntersectionObserver" in window)) {
+		elements.forEach(el => el.classList.add("aos-animate"));
+		return;
+	}
+
+	const aosObserver = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				const element = entry.target;
+				const animationType = element.getAttribute("data-aos");
+				const delay = element.getAttribute("data-aos-delay") || "0";
+				
+				element.style.setProperty("--aos-delay", delay + "ms");
+				element.classList.add("aos-animate", `aos-${animationType}`);
+				aosObserver.unobserve(element);
+			}
+		});
+	}, {
+		threshold: 0.1
+	});
+
+	elements.forEach(el => aosObserver.observe(el));
+}
+
+// Add CSS for AOS animations
+const aosStyles = `
+	[data-aos] {
+		opacity: 0;
+		transition: opacity 0.6s ease, transform 0.6s ease;
+	}
+
+	[data-aos].aos-animate {
+		opacity: 1;
+	}
+
+	.aos-fade-up {
+		transform: translateY(30px);
+	}
+
+	.aos-fade-up.aos-animate {
+		transform: translateY(0);
+	}
+
+	.aos-zoom-in {
+		transform: scale(0.8);
+	}
+
+	.aos-zoom-in.aos-animate {
+		transform: scale(1);
+	}
+
+	.aos-fade-in {
+		opacity: 0;
+	}
+
+	.aos-fade-in.aos-animate {
+		opacity: 1;
+	}
+`;
+
+const styleSheet = document.createElement("style");
+styleSheet.textContent = aosStyles;
+document.head.appendChild(styleSheet);
+
+// Initialize animations when DOM is ready
+document.addEventListener("DOMContentLoaded", addScrollAnimations);
+
+// Parallax effect for hero background (optional, subtle)
+document.addEventListener("scroll", () => {
+	const heroBackground = document.querySelector(".hero-background");
+	if (heroBackground && window.scrollY < window.innerHeight) {
+		const scrolled = window.scrollY;
+		heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+	}
+}, { passive: true });
+

@@ -1,232 +1,312 @@
 {% extends "base.html" %}
 
-{% block title %}Subhash Academy | Home{% endblock %}
+{% block title %}Subhash Academy | Modern College Education{% endblock %}
 
-{% set college_bg = url_for('static', filename='college-bg.jpg', v='20260312b') %}
-{% set aicte_logo = url_for('static', filename='AICTE LOGO.png', v='20260313a') %}
+{% set college_bg = url_for('static', filename='college-bg.jpg', v='20260315j') %}
+{% set aicte_logo = url_for('static', filename='AICTE LOGO.png', v='20260315j') %}
 
 {% block content %}
-<!-- Hero Slider -->
-<div id="heroSlider" class="carousel slide carousel-fade hero-slider" data-bs-ride="carousel" data-bs-interval="5000">
-	<div class="carousel-indicators">
-		<button type="button" data-bs-target="#heroSlider" data-bs-slide-to="0" class="active" aria-current="true"></button>
-		<button type="button" data-bs-target="#heroSlider" data-bs-slide-to="1"></button>
-		<button type="button" data-bs-target="#heroSlider" data-bs-slide-to="2"></button>
-	</div>
-	<div class="carousel-inner hero-slider-inner">
-		<div class="carousel-item active">
-			<div class="hero-section college-hero-bg" style="background-image: linear-gradient(120deg, rgba(10, 38, 71, 0.82), rgba(10, 38, 71, 0.52)), url('{{ college_bg }}');">
-				<div class="container">
-					<div class="hero-slide-content text-white text-center reveal-up">
-						<span class="eyebrow admissions-highlight">Admissions Open 2026</span>
-						<h1 class="mt-3">Excellence in IT &amp; Management Education Since 1998</h1>
-						<p class="lead">AICTE Approved · MCU Bhopal Affiliated · Chhibramau, Kannauj</p>
-						<a href="/admission" class="btn btn-accent btn-lg me-2 mt-3">Apply Now</a>
-						<a href="/courses" class="btn btn-outline-light btn-lg mt-3">Explore Courses</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="carousel-item">
-			<div class="hero-section college-hero-bg" style="background-image: linear-gradient(120deg, rgba(10, 38, 71, 0.78), rgba(44, 116, 179, 0.6)), url('{{ college_bg }}');">
-				<div class="container">
-					<div class="hero-slide-content text-white text-center reveal-up">
-						<span class="eyebrow admissions-highlight">3 Professional Programs</span>
-						<h1 class="mt-3">BCA &middot; PGDCA &middot; DCA</h1>
-						<p class="lead">Government scholarship benefits available · Limited seats · 2026 session</p>
-						<a href="/courses" class="btn btn-accent btn-lg me-2 mt-3">View All Courses</a>
-						<a href="/admission" class="btn btn-outline-light btn-lg mt-3">Admission Form</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="carousel-item">
-			<div class="hero-section college-hero-bg" style="background-image: linear-gradient(120deg, rgba(20, 66, 114, 0.82), rgba(10, 38, 71, 0.6)), url('{{ college_bg }}');">
-				<div class="container">
-					<div class="hero-slide-content text-white text-center reveal-up">
-						<span class="eyebrow admissions-highlight">Campus Facilities</span>
-						<h1 class="mt-3">Modern Labs &middot; Library &middot; Expert Faculty</h1>
-						<p class="lead">A disciplined learning environment for ambitious students in Kannauj region</p>
-						<a href="/library" class="btn btn-accent btn-lg me-2 mt-3">View Library &amp; Lab</a>
-						<a href="/about" class="btn btn-outline-light btn-lg mt-3">About Us</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<button class="carousel-control-prev" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="visually-hidden">Previous</span>
-	</button>
-	<button class="carousel-control-next" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="visually-hidden">Next</span>
-	</button>
-</div>
 
-<!-- Stats bar -->
-<div class="hero-stats-bar">
-	<div class="container">
-		<div class="hero-stats-inner">
-			<div class="hero-stat-item"><strong>25+</strong><span>Years of Excellence</span></div>
-			<div class="hero-stat-item"><strong>3</strong><span>Professional Programs</span></div>
-			<div class="hero-stat-item"><strong>AICTE</strong><span>Approved Institution</span></div>
-			<div class="hero-stat-item"><strong>MCU</strong><span>University Affiliated</span></div>
-		</div>
+<!-- =========== HERO SECTION =========== -->
+<section class="hero-modern">
+	<div class="hero-background" style="background-image: linear-gradient(135deg, rgba(10, 38, 71, 0.85) 0%, rgba(20, 66, 114, 0.75) 100%), url('{{ college_bg }}');">
 	</div>
-</div>
-
-<!-- Events Section -->
-<section class="section-space">
-	<div class="container">
-		<div class="section-heading centered reveal-up">
-			<span class="eyebrow">Upcoming Events</span>
-			<h2>Stay connected with campus life</h2>
+	<div class="container hero-container">
+		<div class="hero-content">
+			<span class="hero-badge">✨ Admissions Open 2026</span>
+			<h1 class="hero-title">Excellence in IT & Management Education</h1>
+			<p class="hero-subtitle">Build your future with AICTE-approved programs designed for the modern workforce. 25+ years of transforming students into industry leaders.</p>
+			<div class="hero-cta">
+				<a href="/admission" class="btn btn-primary btn-lg">
+					<span class="btn-text">Apply Now</span>
+					<span class="btn-arrow">→</span>
+				</a>
+				<a href="/courses" class="btn btn-outline-light btn-lg">Explore Courses</a>
+			</div>
+			<div class="hero-stats">
+				<div class="stat">
+					<div class="stat-number" data-target="25">0</div>
+					<div class="stat-label">Years Excellence</div>
+				</div>
+				<div class="stat">
+					<div class="stat-number" data-target="3">0</div>
+					<div class="stat-label">Programs</div>
+				</div>
+				<div class="stat">
+					<div class="stat-number" data-target="500">0</div>
+					<div class="stat-label">Students</div>
+				</div>
+				<div class="stat">
+					<div class="stat-number" data-target="20">0</div>
+					<div class="stat-label">Expert Faculty</div>
+				</div>
+			</div>
 		</div>
-		<div class="events-grid">
-			<article class="event-card reveal-up">
-				<span class="event-date-badge">&#128197; 25 March 2026</span>
-				<h3>BCA Practical Examinations</h3>
-				<p>Practical exams for all BCA semesters begin. Students must carry their admit cards and report on time.</p>
-			</article>
-			<article class="event-card reveal-up delay-1">
-				<span class="event-date-badge">&#128197; 10 April 2026</span>
-				<h3>Annual Cultural Fest 2026</h3>
-				<p>Annual cultural program celebrating student talents in music, dance, and academic achievements across all programs.</p>
-			</article>
-			<article class="event-card reveal-up delay-2">
-				<span class="event-date-badge">&#128197; 30 April 2026</span>
-				<h3>Admission Last Date &mdash; 2026</h3>
-				<p>Final date to submit admission forms for BCA, PGDCA and DCA programs. Contact the office immediately to secure your seat.</p>
-			</article>
+		<div class="hero-scroll">
+			<span>Scroll to explore</span>
+			<div class="scroll-indicator">↓</div>
 		</div>
 	</div>
 </section>
 
-<section class="section-space">
+<!-- =========== PROGRAMS/COURSES SECTION =========== -->
+<section class="section-modern programs-section">
 	<div class="container">
-		<div class="section-heading centered reveal-up">
-			<span class="eyebrow">Why Choose Us</span>
-			<h2>An institute built for real-world success</h2>
+		<div class="section-header">
+			<span class="section-badge">Our Programs</span>
+			<h2 class="section-title">Choose Your Path to Success</h2>
+			<p class="section-description">Three comprehensive programs designed to meet industry demands and unlock career opportunities</p>
 		</div>
-		<div class="feature-grid">
-			<article class="feature-card reveal-up aicte-feature-card">
-				<img src="{{ aicte_logo }}" alt="AICTE Approved Logo" class="aicte-feature-logo">
+
+		<div class="programs-grid">
+			<!-- BCA Card -->
+			<div class="program-card-modern card-hover" data-aos="fade-up">
+				<div class="card-icon">🖥️</div>
+				<h3>Bachelor of Computer Application</h3>
+				<p class="program-duration">3 Years | ₹10,900/Semester</p>
+				<p class="program-desc">Master advanced programming, database management, and software development. Build expertise for careers in IT companies worldwide.</p>
+				<ul class="program-highlights">
+					<li>✓ Full-stack web development</li>
+					<li>✓ Database & SQL mastery</li>
+					<li>✓ Industry-ready projects</li>
+					<li>✓ Placement support</li>
+				</ul>
+				<a href="/courses" class="btn-read-more">Learn More →</a>
+			</div>
+
+			<!-- PGDCA Card -->
+			<div class="program-card-modern card-hover" data-aos="fade-up" data-aos-delay="100">
+				<div class="card-icon">📚</div>
+				<h3>Post Graduate Diploma in Computer App.</h3>
+				<p class="program-duration">1 Year | ₹8,500/Semester</p>
+				<p class="program-desc">Fast-track your IT career with focused diploma study. Perfect for graduates seeking quick upskilling and job-ready skills.</p>
+				<ul class="program-highlights">
+					<li>✓ Accelerated learning path</li>
+					<li>✓ Practical hands-on training</li>
+					<li>✓ Industry certifications</li>
+					<li>✓ Career counseling</li>
+				</ul>
+				<a href="/courses" class="btn-read-more">Learn More →</a>
+			</div>
+
+			<!-- DCA Card -->
+			<div class="program-card-modern card-hover" data-aos="fade-up" data-aos-delay="200">
+				<div class="card-icon">💻</div>
+				<h3>Diploma in Computer Application</h3>
+				<p class="program-duration">1 Year | ₹5,760/Semester</p>
+				<p class="program-desc">Start your computer education journey with foundational skills in programming, office tools, and web basics.</p>
+				<ul class="program-highlights">
+					<li>✓ Beginner-friendly curriculum</li>
+					<li>✓ Essential IT skills</li>
+					<li>✓ Modern lab facilities</li>
+					<li>✓ Flexible learning schedule</li>
+				</ul>
+				<a href="/courses" class="btn-read-more">Learn More →</a>
+			</div>
+		</div>
+
+		<div class="section-cta">
+			<a href="/courses" class="btn btn-primary btn-lg">View All Courses & Admission Details</a>
+		</div>
+	</div>
+</section>
+
+<!-- =========== STATISTICS/COUNTERS SECTION =========== -->
+<section class="section-modern stats-section" style="background: linear-gradient(135deg, #0A2647 0%, #144272 100%);">
+	<div class="container">
+		<div class="stats-grid">
+			<div class="stat-card" data-aos="zoom-in">
+				<div class="stat-icon">👥</div>
+				<div class="stat-content">
+					<h4 class="stat-counter" data-target="500">0</h4>
+					<p>Active Students</p>
+				</div>
+			</div>
+			<div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+				<div class="stat-icon">👨‍🏫</div>
+				<div class="stat-content">
+					<h4 class="stat-counter" data-target="20">0</h4>
+					<p>Expert Faculty</p>
+				</div>
+			</div>
+			<div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+				<div class="stat-icon">📚</div>
+				<div class="stat-content">
+					<h4 class="stat-counter" data-target="3">0</h4>
+					<p>Active Programs</p>
+				</div>
+			</div>
+			<div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+				<div class="stat-icon">🏆</div>
+				<div class="stat-content">
+					<h4 class="stat-counter" data-target="25">0</h4>
+					<p>Years of Excellence</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- =========== WHY CHOOSE US SECTION =========== -->
+<section class="section-modern features-section">
+	<div class="container">
+		<div class="section-header">
+			<span class="section-badge">Why Choose Us</span>
+			<h2 class="section-title">Built for Student Success</h2>
+			<p class="section-description">Industry-recognized education with personal mentorship and modern infrastructure</p>
+		</div>
+
+		<div class="features-grid">
+			<div class="feature-card-modern" data-aos="fade-up">
+				<div class="feature-icon">✓</div>
 				<h3>AICTE Approved</h3>
-				<p>Our programs are approved by the All India Council for Technical Education, ensuring nationally recognized credentials for every graduate.</p>
-			</article>
-			<article class="feature-card reveal-up delay-1">
+				<p>All programs are officially approved by AICTE, ensuring nationally recognized credentials and industry acceptance worldwide.</p>
+			</div>
+			<div class="feature-card-modern" data-aos="fade-up" data-aos-delay="100">
+				<div class="feature-icon">✓</div>
 				<h3>Expert Faculty</h3>
-				<p>Our educators hold postgraduate degrees and bring decades of experience — guiding students with both technical depth and personal mentorship.</p>
-			</article>
-			<article class="feature-card reveal-up delay-2">
-				<h3>Modern Infrastructure</h3>
-				<p>State-of-the-art computer labs, a well-stocked library, and consistent technical support create an environment where students learn by doing.</p>
-			</article>
-		</div>
-	</div>
-</section>
-
-<section class="section-space section-surface">
-	<div class="container">
-		<div class="section-heading reveal-up">
-			<span class="eyebrow">Programs</span>
-			<h2>Courses that open doors in the digital world</h2>
-		</div>
-		<div class="program-grid">
-			<article class="program-card reveal-up">
-				<span class="program-duration">3 Years &nbsp;|&nbsp; ₹10,900 / sem</span>
-				<h3>BCA</h3>
-				<p>Bachelor of Computer Application — a comprehensive undergraduate degree preparing students for software development, IT management, and beyond.</p>
-			</article>
-			<article class="program-card reveal-up delay-1">
-				<span class="program-duration">1 Year &nbsp;|&nbsp; ₹8,500 / sem</span>
-				<h3>PGDCA</h3>
-				<p>Post Graduate Diploma in Computer Application — designed for graduates looking to strengthen IT skills and boost career prospects quickly.</p>
-			</article>
-			<article class="program-card reveal-up delay-2">
-				<span class="program-duration">1 Year &nbsp;|&nbsp; ₹5,760 / sem</span>
-				<h3>DCA</h3>
-				<p>Diploma in Computer Application — an accessible, practical course equipping students with core computer skills for today's job market.</p>
-			</article>
-		</div>
-	</div>
-</section>
-
-<section class="section-space pt-0">
-	<div class="container">
-		<div class="section-heading reveal-up">
-			<span class="eyebrow">Distance Mode</span>
-			<h2>Additional courses available in distance learning</h2>
-		</div>
-		<div class="feature-grid">
-			<article class="feature-card reveal-up">
-				<h3>Management</h3>
-				<p>MBA and M.Com distance options for students and working professionals looking for career growth.</p>
-			</article>
-			<article class="feature-card reveal-up delay-1">
-				<h3>Arts &amp; Social Sciences</h3>
-				<p>MA, BA and MSW programs available in distance mode with admission support from our team.</p>
-			</article>
-			<article class="feature-card reveal-up delay-2">
-				<h3>Science &amp; Computer</h3>
-				<p>MCA and M.Sc options offered through distance mode pathways with guidance on eligibility and enrollment.</p>
-			</article>
-		</div>
-		<div class="mt-4 reveal-up">
-			<a href="/admission" class="btn btn-accent">Get Distance Course Guidance</a>
-		</div>
-	</div>
-</section>
-
-<section class="section-space">
-	<div class="container">
-		<div class="split-panel reveal-up">
-			<div>
-				<span class="eyebrow">Notice Board</span>
-				<h2>Important updates for students</h2>
+				<p>Learn from experienced educators with advanced degrees, providing both technical expertise and personalized mentorship.</p>
 			</div>
-			<div class="notice-list">
-				<div class="notice-item">
-					<strong>All Semester Results Declared — Mar 2026</strong>
-					<p>BCA and PGDCA results for all semesters have been declared. Students can check results through the university portal.</p>
-				</div>
-				<div class="notice-item">
-					<strong>PGDCA &amp; DCA Admission Date Extended</strong>
-					<p>The last date for new admissions to PGDCA and DCA has been extended. Contact the office immediately to secure your seat.</p>
-				</div>
-				<div class="notice-item">
-					<strong>Practical Timetable 2025–26 Released</strong>
-					<p>BCA practical examination timetable for 2025–26 has been released. All students are advised to prepare accordingly.</p>
-				</div>
+			<div class="feature-card-modern" data-aos="fade-up" data-aos-delay="200">
+				<div class="feature-icon">✓</div>
+				<h3>Modern Labs</h3>
+				<p>State-of-the-art computer labs with latest software, hardware, and 24/7 technical support for hands-on learning.</p>
+			</div>
+			<div class="feature-card-modern" data-aos="fade-up" data-aos-delay="300">
+				<div class="feature-icon">✓</div>
+				<h3>Placement Support</h3>
+				<p>Dedicated career services with industry connections, resume building, and job placement assistance.</p>
+			</div>
+			<div class="feature-card-modern" data-aos="fade-up" data-aos-delay="400">
+				<div class="feature-icon">✓</div>
+				<h3>Flexible Learning</h3>
+				<p>Programs available in both regular and distance mode, fitting your schedule and learning preferences.</p>
+			</div>
+			<div class="feature-card-modern" data-aos="fade-up" data-aos-delay="500">
+				<div class="feature-icon">✓</div>
+				<h3>Student Support</h3>
+				<p>Personal counsel services, academic guidance, and co-curricular activities for holistic development.</p>
 			</div>
 		</div>
 	</div>
 </section>
 
-<section class="section-space section-surface">
+<!-- =========== CAMPUS GALLERY SECTION =========== -->
+<section class="section-modern gallery-section" style="background-color: #f8fafb;">
 	<div class="container">
-		<div class="section-heading reveal-up">
-			<span class="eyebrow">Campus Facilities</span>
-			<h2>Library and lab support for practical learning</h2>
+		<div class="section-header">
+			<span class="section-badge">Campus Life</span>
+			<h2 class="section-title">Experience Our Campus</h2>
+			<p class="section-description">Modern facilities, vibrant student life, and a supportive learning community</p>
 		</div>
-		<div class="feature-grid">
-			<article class="feature-card reveal-up">
-				<h3>Library Support</h3>
-				<p>Updated books, reference material, previous year papers, and a focused reading space for BCA, PGDCA, and DCA students.</p>
-			</article>
-			<article class="feature-card reveal-up delay-1">
-				<h3>Computer Lab</h3>
-				<p>Hands-on practical sessions with modern systems for programming, database, office tools, and project work.</p>
-			</article>
-			<article class="feature-card reveal-up delay-2">
-				<h3>Dedicated Incharge</h3>
-				<p>Students get guidance for issue-return process, lab usage, and practical preparation through dedicated faculty support.</p>
-			</article>
+
+		<div class="gallery-grid">
+			<a href="/gallery" class="gallery-item-modern" data-aos="zoom-in">
+				<div class="gallery-image" style="background-image: url('{{ college_bg }}')"></div>
+				<div class="gallery-overlay">
+					<h4>Computer Labs</h4>
+				</div>
+			</a>
+			<a href="/gallery" class="gallery-item-modern" data-aos="zoom-in" data-aos-delay="100">
+				<div class="gallery-image" style="background-image: linear-gradient(135deg, #0A2647, #144272)"></div>
+				<div class="gallery-overlay">
+					<h4>Classroom Sessions</h4>
+				</div>
+			</a>
+			<a href="/gallery" class="gallery-item-modern" data-aos="zoom-in" data-aos-delay="200">
+				<div class="gallery-image" style="background-image: url('{{ college_bg }}')"></div>
+				<div class="gallery-overlay">
+					<h4>Campus Events</h4>
+				</div>
+			</a>
 		</div>
-		<div class="mt-4 reveal-up">
-			<a href="/library" class="btn btn-accent">View Full Library &amp; Lab Details</a>
+
+		<div class="section-cta">
+			<a href="/gallery" class="btn btn-primary btn-lg">View Complete Gallery</a>
 		</div>
 	</div>
 </section>
+
+<!-- =========== TESTIMONIALS SECTION =========== -->
+<section class="section-modern testimonials-section">
+	<div class="container">
+		<div class="section-header">
+			<span class="section-badge">Student Reviews</span>
+			<h2 class="section-title">What Our Students Say</h2>
+			<p class="section-description">Real experiences from students who have succeeded through our programs</p>
+		</div>
+
+		<div class="testimonials-carousel">
+			<div class="testimonial-card" data-aos="fade-in">
+				<div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+				<p class="testimonial-text">"Subhash Academy provided me with solid technical foundation and excellent mentorship. The faculty's dedication and practical approach helped me secure a great job within months of graduation."</p>
+				<div class="testimonial-author">
+					<h4>Rahul Mishra</h4>
+					<p>BCA Graduate, Software Developer at TCS</p>
+				</div>
+			</div>
+
+			<div class="testimonial-card" data-aos="fade-in">
+				<div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+				<p class="testimonial-text">"The PGDCA program was exactly what I needed to transition into IT. The curriculum is industry-relevant, labs are equipped with latest tools, and placement support is exceptional."</p>
+				<div class="testimonial-author">
+					<h4>Priya Sharma</h4>
+					<p>PGDCA Graduate, IT Analyst at Infosys</p>
+				</div>
+			</div>
+
+			<div class="testimonial-card" data-aos="fade-in">
+				<div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+				<p class="testimonial-text">"Being from a small town, I couldn't afford expensive coaching. Subhash Academy's affordable programs and quality education opened doors for my IT career. Highly recommended!"</p>
+				<div class="testimonial-author">
+					<h4>Arun Kumar</h4>
+					<p>DCA Graduate, Systems Administrator</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- =========== CTA SECTION =========== -->
+<section class="section-modern cta-section" style="background: linear-gradient(135deg, #0A2647 0%, #144272 100%);">
+	<div class="container">
+		<div class="cta-content">
+			<h2>Ready to Transform Your Future?</h2>
+			<p>Join hundreds of successful graduates from Subhash Academy. Limited seats available for 2026 admissions.</p>
+			<a href="/admission" class="btn btn-primary btn-lg">Start Your Application Today</a>
+		</div>
+	</div>
+</section>
+
+<!-- =========== NOTICE BOARD SECTION =========== -->
+<section class="section-modern notices-section" style="background-color: #f8fafb;">
+	<div class="container">
+		<div class="section-header">
+			<span class="section-badge">Updates</span>
+			<h2 class="section-title">Latest Notices & Announcements</h2>
+		</div>
+
+		<div class="notices-grid">
+			<article class="notice-card" data-aos="fade-up">
+				<span class="notice-badge">📌 Important</span>
+				<h4>All Semester Results Declared</h4>
+				<p>BCA and PGDCA results for all semesters have been declared. Check university portal for detailed marks and academic performance.</p>
+				<time>March 2026</time>
+			</article>
+			<article class="notice-card" data-aos="fade-up" data-aos-delay="100">
+				<span class="notice-badge">🎯 Admission</span>
+				<h4>PGDCA & DCA Admission Extended</h4>
+				<p>Final date for new admissions to PGDCA and DCA extended. Limited seats remaining. Contact office immediately to secure your seats.</p>
+				<time>March 2026</time>
+			</article>
+			<article class="notice-card" data-aos="fade-up" data-aos-delay="200">
+				<span class="notice-badge">📋 Exam</span>
+				<h4>Practical Timetable Released</h4>
+				<p>BCA practical examination timetable for 2025-26 has been released. All students must prepare accordingly and report on time.</p>
+				<time>March 2026</time>
+			</article>
+		</div>
+	</div>
+</section>
+
 {% endblock %}
