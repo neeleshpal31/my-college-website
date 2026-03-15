@@ -2725,3 +2725,121 @@ h4 {
 		min-height: 220px;
 	}
 }
+
+/* ========== DIRECTOR MESSAGE SECTION ========== */
+.director-message-section {
+	display: grid;
+	grid-template-columns: 1.1fr 0.9fr;
+	gap: 3rem;
+	align-items: center;
+	background: linear-gradient(135deg, rgba(237, 245, 255, 0.6), rgba(255, 247, 232, 0.6));
+	padding: 3rem;
+	border-radius: 20px;
+	border: 1px solid rgba(10, 38, 71, 0.08);
+	box-shadow: 0 10px 40px rgba(10, 38, 71, 0.06);
+}
+
+.director-message-content {
+	max-width: 600px;
+}
+
+.director-message-content .eyebrow {
+	display: inline-block;
+	margin-bottom: 0.8rem;
+}
+
+.director-message-content h2 {
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
+	color: var(--navy);
+	font-weight: 800;
+}
+
+.director-message-content > p {
+	font-size: 1rem;
+	line-height: 1.8;
+	color: var(--muted);
+	margin-bottom: 1.5rem;
+}
+
+.director-quote-panel {
+	padding: 1.8rem;
+	background: #fff;
+	border-radius: 14px;
+	border-left: 4px solid var(--gold);
+	box-shadow: 0 6px 20px rgba(10, 38, 71, 0.08);
+	margin: 1.5rem 0;
+}
+
+.director-quote-panel p {
+	color: var(--navy);
+}
+
+.director-signature {
+	margin-top: 1.5rem;
+}
+
+.director-signature strong {
+	font-size: 1.1rem;
+}
+
+.director-image-wrap {
+	position: relative;
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 20px 60px rgba(10, 38, 71, 0.15);
+	height: 100%;
+	min-height: 450px;
+}
+
+.director-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center top;
+	display: block;
+	transition: transform 0.4s ease;
+}
+
+.director-message-section:hover .director-image {
+	transform: scale(1.02);
+}
+
+@media (max-width: 992px) {
+	.director-message-section {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		padding: 2rem;
+	}
+
+	.director-image-wrap {
+		min-height: 350px;
+	}
+
+	.director-message-content h2 {
+		font-size: 1.6rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.director-message-section {
+		padding: 1.5rem;
+		gap: 1.5rem;
+	}
+
+	.director-image-wrap {
+		min-height: 300px;
+	}
+
+	.director-message-content h2 {
+		font-size: 1.4rem;
+	}
+
+	.director-quote-panel {
+		padding: 1.2rem;
+	}
+
+	.director-quote-panel p {
+		font-size: 0.95rem;
+	}
+}
